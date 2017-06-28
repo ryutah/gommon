@@ -8,7 +8,9 @@ import (
 
 func TestFind(t *testing.T) {
 	s := []string{"foo", "bar", "foobar"}
-	i, ok := slice.Find(s, "bar")
+	i, ok := slice.Find(s, func(s string) bool {
+		return s == "bar"
+	})
 	if !ok {
 		t.Fail()
 	}
