@@ -5,13 +5,7 @@ import (
 	"reflect"
 )
 
-func Find(slice interface{}, val interface{}) (int, bool) {
-	return FindBy(slice, val, func(v interface{}) bool {
-		return v == val
-	})
-}
-
-func FindBy(slice interface{}, val interface{}, compareFunc interface{}) (int, bool) {
+func Find(slice interface{}, compareFunc interface{}) (int, bool) {
 	sliceType := reflect.TypeOf(slice)
 	if sliceType.Kind() != reflect.Slice {
 		panic(fmt.Sprintf("%v is not slice", slice))
